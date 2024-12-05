@@ -32,6 +32,7 @@
         <junit.version>4.13.2</junit.version>
         <javafx.maven.version>0.0.8</javafx.maven.version>
         <lombok.version>1.18.36</lombok.version>
+        <testfx.version>4.0.18</testfx.version>
     </properties>
     <dependencies>
         <dependency>
@@ -82,6 +83,12 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-junit5</artifactId>
+            <version>${testfx.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -91,6 +98,17 @@
                 <version>${javafx.maven.version}</version>
                 <configuration>
                     <mainClass>ru.iamlukovkin.map.App</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <argLine>
+                        --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+                        --add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>

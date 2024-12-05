@@ -1,25 +1,18 @@
 package ru.iamlukovkin.map;
 
 import javafx.application.Application;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.Getter;
 
 /**
  * Class for creating a window
  */
+@Getter
 public class App extends Application {
-
-    public double getWidth() {
-        return width;
-    }
-
-    public double getHeight() {
-        return height;
-    }
 
     private final double width = 300;
     private final double height = 250;
@@ -39,7 +32,7 @@ public class App extends Application {
      * Creation of the root element
      * @return root element
      */
-    public Parent createRoot() {
+    public VBox createRoot() {
         VBox root = new VBox();
         Label label = new Label("Hello, JavaFX!");
         root.getChildren().add(label);
